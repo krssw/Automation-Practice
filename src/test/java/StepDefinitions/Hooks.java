@@ -10,15 +10,16 @@ public class Hooks {
     public WebDriver driver;
     public TestContext testContext;
 
-    public Hooks() {
+    public Hooks(TestContext context) {
+        this.testContext = context;
+        this.driver = context.driver;
     }
 
         @Before
         public void setUp () {
-            driver = new ChromeDriver();
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            driver.get("\"http://localhost:8081/index.html\"");
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.get("http://localhost:8081/index.html");
             testContext.driver = driver;
         }
 

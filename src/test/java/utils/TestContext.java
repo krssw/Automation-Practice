@@ -1,12 +1,12 @@
 package utils;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestContext {
-    public final TestContext testContext;
     public WebDriver driver;
 
-    public TestContext(TestContext testContext) {
-        this.testContext = testContext;
+    public TestContext() {
+        this.driver = new ChromeDriver();
     }
 }

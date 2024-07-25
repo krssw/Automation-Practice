@@ -11,6 +11,5 @@ import org.junit.runner.RunWith;
         glue={"StepDefinitions"}
 )
 
-
 public class RunTests {
 }

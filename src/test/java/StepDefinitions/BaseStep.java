@@ -8,7 +8,7 @@ public class BaseStep {
     protected TestContext testContext;
 
     public BaseStep (TestContext testContext) {
-        driver = (WebDriver)testContext;
+        this.driver = testContext.driver;
         this.testContext = testContext;
     }
 }

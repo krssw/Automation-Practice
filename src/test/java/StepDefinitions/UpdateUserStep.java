@@ -5,8 +5,14 @@ import Pages.MainPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.TestContext;
+
+import java.time.Duration;
 
 public class UpdateUserStep extends BaseStep {
     MainPage mainPage;
@@ -14,17 +20,17 @@ public class UpdateUserStep extends BaseStep {
 
     public UpdateUserStep(TestContext testContext) {
         super(testContext);
+        mainPage = new MainPage(testContext.driver);
+        addUserPage = new AddUserPage(testContext.driver);
     }
 
     @When("user clicks update user")
     public void clickUpdate() {
-        mainPage = new MainPage(driver);
         mainPage.clickUpdateUserLink();
     }
 
     @And("makes the changes")
         public void updateUserInfo(){
-        addUserPage = new AddUserPage(driver);
         addUserPage.eraseData();
         addUserPage.addNewUser("Bob", "Ross", "bros@kainos.com", "Senior Developer");
     }
@@ -36,9 +42,11 @@ public class UpdateUserStep extends BaseStep {
 
     @Then("user details are updated")
     public void confirmInfoChange(){
-        if(driver.getPageSource().contains("Bob Ross")) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // wait for up to 10 seconds
+        try {
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("body"), "Bob Ross"));
             System.out.println("User updated successfully");
-        } else {
+        } catch (TimeoutException e) {
             System.out.println("User update failed");
         }
     }
