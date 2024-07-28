@@ -1,7 +1,7 @@
 package StepDefinitions;
 
 import io.cucumber.java.en.Given;
-import utils.TestContext;
+import utils.context.TestContext;
 
 import static org.testng.AssertJUnit.assertTrue;
 

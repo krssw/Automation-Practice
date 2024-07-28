@@ -6,31 +6,28 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.TestContext;
-
+import org.testng.Assert;
+import utils.context.TestContext;
 import java.time.Duration;
 
 public class AddUserStep extends BaseStep {
     MainPage mainPage;
     AddUserPage addUserPage;
+    WebDriverWait wait;
 
-    public AddUserStep(TestContext testContext) {
-        super(testContext);
-        mainPage = new MainPage(testContext.driver);
-        addUserPage = new AddUserPage(testContext.driver);
-    }
+    public AddUserStep(TestContext testContext) { super(testContext); }
 
-    @When("user clicks add new user")
+@When("user clicks add new user")
 public void addUser() {
+    mainPage = new MainPage(driver);
     mainPage.clickAddUserLink();
 }
 
 @And("fills in the details")
 public void fillUserDetails() {
+    addUserPage = new AddUserPage(driver);
     addUserPage.addNewUser("Adam", "Malysz", "am@kainos.com", "Junior Developer");
 }
 
@@ -41,12 +38,9 @@ public void confirmCreation() {
 
 @Then("a new user is present in the list")
 public void userPresence() {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // wait for up to 10 seconds
-    try {
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("body"), "Adam Malysz"));
-        System.out.println("User creation successful");
-    } catch (TimeoutException e) {
-        System.out.println("User creation failed");
+    this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
+    String bodyText = driver.findElement(By.tagName("body")).getText();
+    Assert.assertTrue(bodyText.contains("Adam Malysz"), "User addition successful");
     }
-}
 }

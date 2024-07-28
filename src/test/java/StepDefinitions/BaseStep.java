@@ -1,14 +1,15 @@
 package StepDefinitions;
 
 import org.openqa.selenium.WebDriver;
-import utils.TestContext;
+import utils.context.TestContext;
+import utils.context.TestContextKey;
 
 public class BaseStep {
     protected WebDriver driver;
     protected TestContext testContext;
 
     public BaseStep (TestContext testContext) {
-        this.driver = testContext.driver;
+        driver = (WebDriver) testContext.get(TestContextKey.WEB_DRIVER);
         this.testContext = testContext;
     }
 }

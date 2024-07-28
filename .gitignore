@@ -1,0 +1,6 @@
+*.tmp
+*.temp
+*.log
+.idea/
+.DS_Store/
+*/target/*

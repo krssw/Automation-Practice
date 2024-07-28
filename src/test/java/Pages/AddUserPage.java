@@ -1,36 +1,48 @@
 package Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class AddUserPage {
-  WebDriver driver;
+import static org.openqa.selenium.Keys.ENTER;
 
-  public AddUserPage(WebDriver driver){
-    this.driver=driver;
+public class AddUserPage extends BasePage {
+
+  @FindBy(id = "name")
+  private WebElement nameField;
+
+  @FindBy(id = "surname")
+  private WebElement surnameField;
+
+  @FindBy(id = "email")
+  private WebElement emailField;
+
+  @FindBy(id = "position")
+  private WebElement positionField;
+
+  @FindBy(id = "create-user-button")
+  private WebElement createUserButton;
+
+  public AddUserPage (WebDriver driver) {
+    super(driver);
+    PageFactory.initElements(driver, this);
   }
 
-  By nameField = By.id("name");
-  By surnameField = By.id("surname");
-  By emailField = By.id("email");
-  By positionField = By.id("position");
-  By createUserButton = By.xpath("//button[@class='btn btn-success']");
-
   public void eraseData (){
-    driver.findElement(nameField).clear();
-    driver.findElement(surnameField).clear();
-    driver.findElement(emailField).clear();
+    nameField.clear();
+    surnameField.clear();
+    emailField.clear();
   }
 
   public void addNewUser(String name, String surname, String email, String position) {
-    driver.findElement(nameField).sendKeys(name);
-    driver.findElement(surnameField).sendKeys(surname);
-    driver.findElement(emailField).sendKeys(email);
-    driver.findElement(positionField).sendKeys(position);
+    nameField.sendKeys(name);
+    surnameField.sendKeys(surname);
+    emailField.sendKeys(email);
+    positionField.sendKeys(position);
   }
 
   public void confirmUserCreation() {
-    driver.findElement(createUserButton).sendKeys(Keys.ENTER);
+    createUserButton.sendKeys(ENTER);
   }
 }

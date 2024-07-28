@@ -1,33 +1,42 @@
 package Pages;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class MainPage {
+public class MainPage extends BasePage {
 
-    WebDriver driver;
+    @FindBy(xpath = "//*[text()= 'Add new user']")
+    private WebElement addUserLink;
 
-    public MainPage(WebDriver driver){
-        this.driver=driver;
+    @FindBy(xpath = "(//*[text()= 'View details'])[1]")
+    private WebElement viewDetailsLink;
+
+    @FindBy(xpath = "(//*[text()= 'Remove user'])[3]")
+    private WebElement removeUserLink;
+
+    @FindBy(xpath = "(//*[text()= 'Update user'])[2]")
+    private WebElement updateUserLink;
+
+    public MainPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    By addUserLink = By.xpath("//a[@class='btn btn-success']");
-    By viewDetailsLink = By.xpath("//*[@id=\"users-table-body\"]/tr[1]/td[4]/button[1]");
-    By removeUserLink = By.xpath("//*[@id=\"users-table-body\"]/tr[3]/td[4]/button[3]");
-    By updateUserLink = By.xpath("//*[@id=\"users-table-body\"]/tr[2]/td[4]/button[2]");
-
-    public void clickAddUserLink(){
-        driver.findElement(addUserLink).click();
+    public void clickAddUserLink() {
+        addUserLink.click();
     }
 
-    public void clickViewDetailsLink(){
-        driver.findElement(viewDetailsLink).click();
+    public void clickViewDetailsLink() {
+        viewDetailsLink.click();
     }
 
-    public void clickRemoveUserLink(){
-        driver.findElement(removeUserLink).click();
+    public void clickRemoveUserLink() {
+        removeUserLink.click();
     }
 
-    public void clickUpdateUserLink(){
-        driver.findElement(updateUserLink).click();
+    public void clickUpdateUserLink() {
+        updateUserLink.click();
     }
 }
