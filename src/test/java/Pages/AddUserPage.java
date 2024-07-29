@@ -29,20 +29,23 @@ public class AddUserPage extends BasePage {
     PageFactory.initElements(driver, this);
   }
 
-  public void eraseData (){
+  public AddUserPage eraseData (){
     nameField.clear();
     surnameField.clear();
     emailField.clear();
+    return this;
   }
 
-  public void addNewUser(String name, String surname, String email, String position) {
+  public AddUserPage addNewUser(String name, String surname, String email, String position) {
     nameField.sendKeys(name);
     surnameField.sendKeys(surname);
     emailField.sendKeys(email);
     positionField.sendKeys(position);
+    return this;
   }
 
-  public void confirmUserCreation() {
+  public AddUserPage confirmUserCreation() {
     createUserButton.sendKeys(ENTER);
+    return this;
   }
 }

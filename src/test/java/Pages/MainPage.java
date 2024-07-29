@@ -24,19 +24,23 @@ public class MainPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickAddUserLink() {
+    public MainPage clickAddUserLink() {
         addUserLink.click();
+        return this;
     }
 
-    public void clickViewDetailsLink() {
+    public MainPage clickViewDetailsLink() {
         viewDetailsLink.click();
+        return this;
     }
 
-    public void clickRemoveUserLink() {
+    public MainPage clickRemoveUserLink() {
         removeUserLink.click();
+        return this;
     }
 
-    public void clickUpdateUserLink() {
+    public MainPage clickUpdateUserLink() {
         updateUserLink.click();
+        return this;
     }
 }
