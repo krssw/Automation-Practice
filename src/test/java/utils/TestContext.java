@@ -1,10 +1,11 @@
-package utils.context;
+package utils;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class TestContext {
     private final Map<TestContextKey, Object> testContext;
+    private DataMap users;
 
     public TestContext() {
         this.testContext = new HashMap<>();
@@ -15,4 +16,9 @@ public class TestContext {
     }
 
     public void set(TestContextKey key, Object object) { testContext.put(key, object); }
+
+    public DataMap users() {
+        return users;
+    }
+
 }

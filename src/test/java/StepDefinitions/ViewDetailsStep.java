@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import utils.context.TestContext;
+import utils.TestContext;
 
 public class ViewDetailsStep extends BaseStep {
     MainPage mainPage;
@@ -17,11 +17,11 @@ public class ViewDetailsStep extends BaseStep {
     @When("user clicks view user details")
     public void viewDetails() {
         mainPage = new MainPage(driver);
-        mainPage.clickViewDetailsLink();
+        mainPage.viewDetails();
     }
 
     @Then("the details are shown")
     public void detailsPageShown() {
         String bodyText = driver.findElement(By.tagName("body")).getText();
-        Assert.assertTrue(bodyText.contains("User details"), "User details shown successfully");    }
+        Assert.assertTrue(bodyText.contains("utils.context.User details"), "utils.context.User details shown successfully");    }
 }
