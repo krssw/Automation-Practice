@@ -22,7 +22,7 @@ public class RemoveUserStep extends BaseStep {
     }
 
     @When("user clicks remove user")
-    public void addUser() {
+    public void removeUser() {
         mainPage = new MainPage(driver);
         mainPage.clickRemoveUserLink();
     }

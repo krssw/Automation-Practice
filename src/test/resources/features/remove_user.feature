@@ -1,6 +1,6 @@
-Feature: Remove user from list of users
+Feature: User deletion
 
-  Scenario: Check user is successfully removed from the list of users
+  Scenario: Remove user from the list
 
     Given user is on the main page
     When user clicks remove user
