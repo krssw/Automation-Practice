@@ -17,7 +17,7 @@ public class UpdateUserStep extends BaseStep {
         super(testContext);
     }
 
-    @When("user clicks update user")
+    @When("user clicks update {string}")
     public void clickUpdate() {
         mainPage = new MainPage(driver);
         mainPage.updateUser();
@@ -30,12 +30,12 @@ public class UpdateUserStep extends BaseStep {
         addUserPage.addNewUser("Bob", "Ross", "bros@kainos.com", "Senior Developer");
     }
 
-    @And("confirms user update")
+    @And("confirms update")
     public void confirmUpdate(){
         addUserPage.confirmUserCreation();
     }
 
-    @Then("user details are updated")
+    @Then("{string} details are updated")
     public void confirmInfoChange(){
         String bodyText = driver.findElement(By.tagName("body")).getText();
         Assert.assertTrue(bodyText.contains("Bob Ross"), "utils.context.User update successful");

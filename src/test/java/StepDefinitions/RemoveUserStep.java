@@ -16,14 +16,14 @@ public class RemoveUserStep extends BaseStep {
         super(testContext);
     }
 
-    @When("user clicks remove user")
+    @When("user clicks remove {string}")
     public void removeUser() {
         mainPage = new MainPage(driver);
         mainPage.removeUser();
     }
 
-    @Then("user is removed from the list")
-    public void userRemoval() {
+    @Then("{string} is removed from the list")
+    public void userIsRemoved() {
         String bodyText = driver.findElement(By.tagName("body")).getText();
         assertTrue(!bodyText.contains("Adam Malysz"));
     }

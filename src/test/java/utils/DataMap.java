@@ -9,4 +9,8 @@ public class DataMap {
     public DataMap() { users = new HashMap<>(); }
 
     public User get(String key) { return users.get(key); }
+
+    public void add(String alias, User user) {
+        users.put(alias, user);
+    }
 }

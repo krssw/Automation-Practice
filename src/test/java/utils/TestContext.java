@@ -9,6 +9,7 @@ public class TestContext {
 
     public TestContext() {
         this.testContext = new HashMap<>();
+        users = new DataMap();
     }
 
     public Object get(TestContextKey key){
@@ -20,5 +21,4 @@ public class TestContext {
     public DataMap users() {
         return users;
     }
-
 }

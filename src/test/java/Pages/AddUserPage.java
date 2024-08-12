@@ -33,7 +33,7 @@ public class AddUserPage extends BasePage {
     nameField.clear();
     surnameField.clear();
     emailField.clear();
-    return this;
+    return new AddUserPage(driver);
   }
 
   public AddUserPage addNewUser(String name, String surname, String email, String position) {
@@ -41,11 +41,11 @@ public class AddUserPage extends BasePage {
     surnameField.sendKeys(surname);
     emailField.sendKeys(email);
     positionField.sendKeys(position);
-    return this;
+    return new AddUserPage(driver);
   }
 
   public AddUserPage confirmUserCreation() {
     createUserButton.sendKeys(ENTER);
-    return this;
+    return new AddUserPage(driver);
   }
 }

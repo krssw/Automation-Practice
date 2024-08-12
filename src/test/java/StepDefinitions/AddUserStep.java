@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import utils.BasicUser;
 import utils.TestContext;
 
 public class AddUserStep extends BaseStep {
@@ -21,10 +22,15 @@ public void addUser() {
     mainPage.addUser();
 }
 
-@And("fills in the details {string} {string} {string}")
-public void fillUserDetails(String name, String surname, String email) {
-    addUserPage = new AddUserPage(driver);
-    addUserPage.addNewUser(name, surname, email, "Junior Developer");
+@And("fills in the {string} details")
+public void fillUserDetails(String userAlias) {
+    BasicUser basicUser = BasicUser.builder()
+            .name("Elon")
+            .surname("Husk")
+            .email("x@mail.com")
+            .position("Lead Developer")
+            .build();
+    testContext.users().add(userAlias, basicUser);
 }
 
 @And("confirms the user creation")
@@ -32,9 +38,9 @@ public void confirmCreation() {
     addUserPage.confirmUserCreation();
 }
 
-@Then("a new user is present in the list {string} {string}")
+@Then("a new {string} is present in the list")
 public void userPresence(String name, String surname) {
     String bodyText = driver.findElement(By.tagName("body")).getText();
-    Assert.assertTrue(bodyText.contains(name + " " + surname), "utils.context.User addition successful");
+    Assert.assertTrue(bodyText.contains(name + " " + surname));
     }
 }

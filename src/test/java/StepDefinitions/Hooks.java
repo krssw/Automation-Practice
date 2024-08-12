@@ -13,7 +13,7 @@ public class Hooks {
 
     public Hooks(TestContext testContext) { this.testContext = testContext; }
 
-        @Before
+        @Before("not @API")
         public void setUp () {
             driver = new ChromeDriver();
             driver.manage().window().maximize();
@@ -21,5 +21,4 @@ public class Hooks {
             driver.get("http://localhost:8081/index.html");
             testContext.set(TestContextKey.WEB_DRIVER, driver);
         }
-
 }
