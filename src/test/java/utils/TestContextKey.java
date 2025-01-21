@@ -1,4 +1,4 @@
-package utils.context;
+package utils;
 
 public enum TestContextKey {
     WEB_DRIVER,

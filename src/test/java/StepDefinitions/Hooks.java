@@ -4,16 +4,12 @@ import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
-
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.context.TestContext;
-import utils.context.TestContextKey;
+import utils.TestContext;
+import utils.TestContextKey;
 
 public class Hooks {
     public WebDriver driver;
     public TestContext testContext;
-    WebDriverWait wait;
-
 
     public Hooks(TestContext testContext) { this.testContext = testContext; }
 

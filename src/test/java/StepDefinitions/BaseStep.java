@@ -1,8 +1,8 @@
 package StepDefinitions;
 
 import org.openqa.selenium.WebDriver;
-import utils.context.TestContext;
-import utils.context.TestContextKey;
+import utils.TestContext;
+import utils.TestContextKey;
 
 public class BaseStep {
     protected WebDriver driver;
