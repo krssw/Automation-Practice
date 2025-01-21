@@ -2,9 +2,8 @@ Feature: Update user
 
   Scenario: Update user details
 
-    Given user is on the main page
-    And a 'USER' exists
+    Given there is a 'USER' user
+    And 'USER' user is present in the list
     When user clicks update 'USER'
-    And makes the changes
-    And confirms update
+    And makes and confirms the 'USER' changes
     Then 'USER' details are updated
