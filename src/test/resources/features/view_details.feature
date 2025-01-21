@@ -1,6 +1,6 @@
-Feature: View user details
+Feature: View details
 
-  Scenario: Check user is successfully added to the list of users
+  Scenario: View user details
 
     Given user is on the main page
     When user clicks view user details

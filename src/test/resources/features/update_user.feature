@@ -1,6 +1,6 @@
-Feature: Update user details
+Feature: Update user
 
-  Scenario: Check user details are successfully changed
+  Scenario: Update user details
 
     Given user is on the main page
     When user clicks update user
