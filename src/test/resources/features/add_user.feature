@@ -1,9 +1,8 @@
 Feature: User creation
 
-  Scenario: Add a valid user
+  Scenario: Add a valid user from main page
 
-    Given user is on the main page
+    Given there is a 'USER' user
     When user clicks add new user
-    And fills in the details 'ADAM' 'MALYSZ' 'mail@gmail.com'
-    And confirms the user creation
-    Then a new user is present in the list 'ADAM' 'MALYSZ'
+    And fills in the 'USER' details
+    Then new 'USER' is present in the list

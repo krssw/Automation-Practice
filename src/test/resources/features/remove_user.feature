@@ -2,6 +2,7 @@ Feature: User deletion
 
   Scenario: Remove user from the list
 
-    Given user is on the main page
-    When user clicks remove user
-    Then user is removed from the list
+    Given there is a 'USER' user
+    And 'USER' user is present in the list
+    When user clicks remove 'USER'
+    Then 'USER' is removed from the list
